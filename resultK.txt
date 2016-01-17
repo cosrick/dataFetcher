@@ -1,0 +1,8 @@
+{"ID":"20F85EA97363","timestamp":"2016-01-17 01:20:10","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA96EE0","timestamp":"2016-01-17 01:42:57","currentA":9,"currentPower":609,"energy":0,"powerOn":1}
+{"ID":"20F85EA97363","timestamp":"2016-01-17 01:54:20","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-01-17 01:54:31","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-01-17 01:55:06","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-01-17 01:56:25","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-01-17 01:56:44","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-01-17 12:18:51","currentA":6,"currentPower":544,"energy":0,"powerOn":1}
