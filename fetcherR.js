@@ -5,10 +5,10 @@ var config = require('./config');
 var connection = config.connection;
 
 var host = "http://testserver.tiscservice.com:8080/AiPlugOpenAPI/List";
-// var owner = "0932237971";
-// var token = "67ec1556dd584c6a5b4be91b4c893ae1";
-var owner = "0978388929";						//Kelly
-var token = "2bcdb5ebd035194f7ce1777086d3fae1";	//Kelly
+var owner = "0932237971";
+var token = "67ec1556dd584c6a5b4be91b4c893ae1";
+// var owner = "0978388929";						//Kelly
+// var token = "2bcdb5ebd035194f7ce1777086d3fae1";	//Kelly
 
 var nextStep = {
 	'idle': 'inWater',
@@ -61,7 +61,7 @@ var main = function(){
 
 				var newinfo = JSON.stringify(item) + '\n';
 
-				fs.appendFile('resultR.txt', newinfo, {flags: 'wx'}, function (err){
+				fs.appendFile('resultK.txt', newinfo, {flags: 'wx'}, function (err){
 					if (err)
 						console.log("Write File Error: ", err);
 					console.log("Saved!!!");
