@@ -2,7 +2,16 @@ var nodemailer = require('nodemailer');
 var dateFormat = require('dateformat');
 
 // create reusable transporter object using the default SMTP transport
-var transporter = nodemailer.createTransport('smtps://rick830620%40gmail.com:rick83062@smtp.gmail.com');
+var smtpTransport = require('nodemailer-smtp-transport');
+
+var transporter = nodemailer.createTransport(smtpTransport({
+    service: 'gmail',
+    auth: {
+        user: 'rick830620@gmail.com', // my mail
+        pass: 'rick83062'
+    }
+}));
+// var transporter = nodemailer.createTransport('smtps://rick830620%40gmail.com:rick83062@smtp.gmail.com');
 
 // setup e-mail data with unicode symbols
 var main = function(sendMessage){
@@ -10,7 +19,7 @@ var main = function(sendMessage){
 
 	var mailOptions = {
 	    from: 'RickLee <b01705001@ntu.edu.tw>', // sender address
-	    to: 'rick830620@gmail.com, yoyo42323@gmail.com', // list of receivers
+	    to: 'rick830620@gmail.com', // list of receivers
 	    subject: 'WashingMachine Notice', // Subject line
 	    text: timestamp + ' ' + sendMessage // plaintext body
 	};
