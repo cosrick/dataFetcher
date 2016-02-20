@@ -1559,3 +1559,11 @@
 {"ID":"20F85EA97363","timestamp":"2016-01-20 00:24:50","currentA":776,"currentPower":59290,"energy":2656,"powerOn":1}
 {"ID":"20F85EA97363","timestamp":"2016-01-20 00:25:00","currentA":769,"currentPower":58073,"energy":2659,"powerOn":1}
 {"ID":"20F85EA97363","timestamp":"2016-01-20 00:25:10","currentA":769,"currentPower":58073,"energy":2659,"powerOn":1}
+{"ID":"20F85EA97363","timestamp":"2016-02-16 21:49:07","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-02-16 21:49:32","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-02-16 21:50:02","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-02-16 21:51:34","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-02-16 22:13:34","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA97363","timestamp":"2016-02-17 18:31:51","currentA":68,"currentPower":4027,"energy":0,"powerOn":1}
+{"ID":"20F85EA97363","timestamp":"2016-02-17 20:43:34","currentA":8,"currentPower":680,"energy":3,"powerOn":1}
+{"ID":"20F85EA97363","timestamp":"2016-02-17 20:44:53","currentA":8,"currentPower":683,"energy":4,"powerOn":1}

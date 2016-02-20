@@ -10,14 +10,6 @@ var host = "http://testserver.tiscservice.com:8080/AiPlugOpenAPI/List";
 var owner = "0978388929";						//Kelly
 var token = "2bcdb5ebd035194f7ce1777086d3fae1";	//Kelly
 
-var nextStep = {
-	'idle': 'inWater',
-	'inWater': 'washing',
-	'washing': 'outWater',
-	'outWater': 'drying',
-	'drying': 'idle'
-}
-
 var main = function(){
 
 	// checkStatus("20F85EA96EE0", 123)
@@ -67,17 +59,17 @@ var main = function(){
 					console.log("Saved!!!");
 				});
 
-				// var dataId = (new Buffer(item.ID).toString('base64')) + item.timestamp;
-				// console.log(dataId)
-				// var querystr = "INSERT INTO plugData SET id = ?, plugID = ?, timestamp = ?, currentA = ?, currentPower = ?, energy = ?";
+				var dataId = (new Buffer(item.ID).toString('base64')) + item.timestamp;
+				console.log(dataId)
+				var querystr = "INSERT INTO plugData SET id = ?, plugID = ?, timestamp = ?, currentA = ?, currentPower = ?, energy = ?";
 
-				// connection.query(querystr, [dataId, mac, now, item.currentA, item.currentPower, item.energy], function (err, rows){
-				// 	if (err)
-				// 		console.log("Error: ", err);
-				// 	else
-				// 		console.log("Saved!!");
+				connection.query(querystr, [dataId, mac, now, item.currentA, item.currentPower, item.energy], function (err, rows){
+					if (err)
+						console.log("Error: ", err);
+					else
+						console.log("Saved!!");
 
-				// })
+				})
 
 
 
@@ -85,6 +77,34 @@ var main = function(){
 			
 		}
 	})
+	// fs.readFile('resultK.txt', function (err,data){
+	// 	if (err)
+	// 		console.log("Write File Error: ", err);
+	// 	data = data.toString('utf8');
+	// 	var infos = data.split('\n')
+	// 	infos.forEach(function(info,index){
+	// 		if (index < 10){
+	// 			var item = JSON.parse(info);
+	// 			var dataId = (new Buffer(item.ID).toString('base64')) + item.timestamp;
+	// 			console.log(dataId)
+	// 			var querystr = "INSERT INTO plugData SET id = ?, plugID = ?, timestamp = ?, currentA = ?, currentPower = ?, energy = ?";
+
+	// 			connection.query(querystr, [dataId, item.ID, item.timestamp, item.currentA, item.currentPower, item.energy], function (err, rows){
+	// 				if (err)
+	// 					console.log("Error: ", err);
+	// 				else
+	// 					console.log(rows)
+	// 					console.log("Saved!!");
+
+	// 			})
+	// 		}
+
+	// 	})		
+	// 	// console.log("Saved!!!");
+	// });
+
+
+
 }
 
 if (require.main === module) {
