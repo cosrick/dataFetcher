@@ -6,7 +6,7 @@ var main = function(Message){
 
     client.sendMessage({
 
-        to:'+886932237971', // Any number Twilio can deliver to
+        to:'+886937526021', // Any number Twilio can deliver to
         from: '+12019776421', // A number you bought from Twilio and can use for outbound communication
         body: timestamp + ' ' + Message // body of the SMS message
 

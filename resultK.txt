@@ -4947,3 +4947,10 @@
 {"ID":"20F85EA96EE0","timestamp":"2016-02-19 22:28:19","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
 {"ID":"20F85EA96EE0","timestamp":"2016-02-19 22:28:21","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
 {"ID":"20F85EA96EE0","timestamp":"2016-02-19 22:28:57","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA96EE0","timestamp":"2016-02-21 15:43:57","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA96EE0","timestamp":"2016-02-21 15:44:17","currentA":0,"currentPower":0,"energy":0,"powerOn":null}
+{"ID":"20F85EA96EE0","timestamp":"2016-02-23 00:43:10","currentA":13,"currentPower":1172,"energy":27861,"powerOn":1}
+{"ID":"20F85EA96EE0","timestamp":"2016-02-23 00:43:29","currentA":13,"currentPower":1172,"energy":27861,"powerOn":1}
+{"ID":"20F85EA96EE0","timestamp":"2016-02-23 00:43:35","currentA":13,"currentPower":1172,"energy":27861,"powerOn":1}
+{"ID":"20F85EA96EE0","timestamp":"2016-02-23 00:43:52","currentA":13,"currentPower":1172,"energy":27861,"powerOn":1}
+{"ID":"20F85EA96EE0","timestamp":"2016-02-23 00:44:44","currentA":13,"currentPower":1172,"energy":27861,"powerOn":1}

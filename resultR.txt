@@ -1567,3 +1567,4 @@
 {"ID":"20F85EA97363","timestamp":"2016-02-17 18:31:51","currentA":68,"currentPower":4027,"energy":0,"powerOn":1}
 {"ID":"20F85EA97363","timestamp":"2016-02-17 20:43:34","currentA":8,"currentPower":680,"energy":3,"powerOn":1}
 {"ID":"20F85EA97363","timestamp":"2016-02-17 20:44:53","currentA":8,"currentPower":683,"energy":4,"powerOn":1}
+{"ID":"20F85EA97363","timestamp":"2016-02-21 15:44:07","currentA":8,"currentPower":632,"energy":20865,"powerOn":1}
