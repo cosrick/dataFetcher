@@ -4,7 +4,8 @@ var dateFormat = require('dateformat');
 var async = require('async');
 var config = require('./config');
 var connection = config.connection;
-var sendEmail = require('./sendEmail');
+var sendMessage = require('./sendMessage');
+
 
 var nowStatus;
 var transform;
@@ -81,11 +82,9 @@ var main = function(){
 
 						nowStatus = rows[0].status;
 						transform = rows[0].transitionPeriod;
-						if (!rows[0].period)
-							nowPeriod = 1;
-						else
-							nowPeriod = rows[0].period;
+						nowPeriod = rows[0].period;
 						preStatus = rows[1].status;
+
 						console.log(currentPower)
 						
 						var queryString;
@@ -97,10 +96,8 @@ var main = function(){
 								connection.query(queryString, function (err, rows){
 									if (err)
 										console.log(err)
-										// callback(err);
 									else
 										console.log(timestamp,nowStatus,transform,preStatus)
-										// callback();
 								});
 							}else{
 								transform = 0;
@@ -108,14 +105,12 @@ var main = function(){
 								if (nowStatus == 'inWater' && nowPeriod == 1)
 									sendMessage(["+8869783388929"],"StartWashing");
 								else if (nowStatus == 'idle' && nowPeriod == 0)
-									sendSubscriptionEmail("EndWashing");
+									sendFinishNotice(mac);
 								connection.query(queryString, [transform],function (err, rows){
 									if (err)
 										console.log(err)
-										// callback(err);
 									else
 										console.log(timestamp, nowStatus,transform,preStatus)
-										// callback();
 								});
 							} 
 						}else{
@@ -138,24 +133,16 @@ var main = function(){
 								connection.query(queryString, [dataId, mac, timestamp, nowStatus, 1, nowPeriod],function (err, rows){
 									if (err)
 										console.log(err)
-										// callback(err);
 									else
 										console.log(timestamp,nowStatus,transform,preStatus,nowPeriod)
-										// callback();
 								});
 								
 							}else{
 								console.log(timestamp,nowStatus,transform,preStatus,nowPeriod)
-								// callback()
 							}
 						}
 					}
 				})
-			// },function(err){
-			// 	if (err)
-			// 		console.log(err);
-			// 	console.log(nowStatus,transform,preStatus)
-			// })
 			
 		}
 	})
@@ -170,6 +157,22 @@ function inStatus(power ,status){
 		return power < statusPower;
 	else
 		return false;
+}
+
+function sendFinishNotice(macID){
+	var querystr = "SELECT * FROM subscription INNER JOIN user ON subscription.userEmail=user.email WHERE `finish` = 0 AND machineID = ?";
+	var users = [];
+	connection.query(querystr, [macID], function(err, rows){
+		if (rows.length > 0){
+			rows.forEach(function(row,index){
+				users.push(row.phone)
+				sendMessage(users,"Washing Machine Finished");
+			})
+		}else{
+			console.log("no user subscript")
+		}
+	})
+	console.log(users)
 }
 
 if (require.main === module) {
