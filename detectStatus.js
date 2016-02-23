@@ -106,7 +106,7 @@ var main = function(){
 								if (nowStatus == 'inWater' && nowPeriod == 1)
 									sendMessage(["+8869783388929"],"StartWashing");
 								else if (nowStatus == 'idle' && nowPeriod == 0)
-									sendSubscriptionEmail("EndWashing");
+									sendFinishNotice(mac);
 								connection.query(queryString, [transform],function (err, rows){
 									if (err)
 										console.log(err)
