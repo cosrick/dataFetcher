@@ -82,11 +82,9 @@ var main = function(){
 
 						nowStatus = rows[0].status;
 						transform = rows[0].transitionPeriod;
-						if (!rows[0].period)
-							nowPeriod = 1;
-						else
-							nowPeriod = rows[0].period;
+						nowPeriod = rows[0].period;
 						preStatus = rows[1].status;
+
 						console.log(currentPower)
 						
 						var queryString;
@@ -163,10 +161,11 @@ function inStatus(power ,status){
 
 function sendFinishNotice(macID){
 	var querystr = "SELECT * FROM subscription INNER JOIN user ON subscription.userEmail=user.email WHERE `finish` = 0 AND machineID = ?";
+	var users = [];
 	connection.query(querystr, [macID], function(err, rows){
 		if (rows.length > 0){
 			rows.forEach(function(row,index){
-				users.push(row.number)
+				users.push(row.phone)
 				sendMessage(users,"Washing Machine Finished");
 			})
 		}else{
