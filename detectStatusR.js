@@ -28,7 +28,7 @@ var machineStatus = {
 		next: 'inWater'
 	},
 	'inWater': {
-		power: 1400,
+		power: 1200,
 		next: 'washing'
 	},
 	'washing': {
@@ -36,7 +36,7 @@ var machineStatus = {
 		next: 'outWater'
 	},
 	'outWater': {
-		power: 47000,
+		power: 45000,
 		next: 'drying'
 	},
 	'drying': {
@@ -106,7 +106,7 @@ var main = function(){
 								transform = 0;
 								queryString = "UPDATE plugStatus SET `transitionPeriod` = ? WHERE `transitionPeriod` > 0 ";
 								if (nowStatus == 'inWater' && nowPeriod == 1)
-									sendMessage(["+8869783388929"],"StartWashing");
+									sendMessage(["+886978388929"],"StartWashing");
 								else if (nowStatus == 'idle' && nowPeriod == 1)
 									sendFinishNotice(mac);
 								connection.query(queryString, [transform],function (err, rows){
@@ -154,7 +154,7 @@ var main = function(){
 
 function inStatus(power ,status){
 	var statusPower = machineStatus[status].power
-	if ((Math.abs(power - statusPower) / statusPower) < 0.15)
+	if ((Math.abs(power - statusPower) / statusPower) < 0.12)
 		return true;
 	else if (status == 'idle')
 		return power < statusPower;
