@@ -82,7 +82,10 @@ var main = function(){
 
 						nowStatus = rows[0].status;
 						transform = rows[0].transitionPeriod;
-						nowPeriod = rows[0].period;
+						if (rows[0].period == 0)
+							nowPeriod = 1
+						else
+							nowPeriod = rows[0].period;
 						preStatus = rows[1].status;
 
 						console.log(currentPower)
@@ -104,7 +107,7 @@ var main = function(){
 								queryString = "UPDATE plugStatus SET `transitionPeriod` = ? WHERE `transitionPeriod` > 0 ";
 								if (nowStatus == 'inWater' && nowPeriod == 1)
 									sendMessage(["+8869783388929"],"StartWashing");
-								else if (nowStatus == 'idle' && nowPeriod == 0)
+								else if (nowStatus == 'idle' && nowPeriod == 1)
 									sendFinishNotice(mac);
 								connection.query(queryString, [transform],function (err, rows){
 									if (err)
