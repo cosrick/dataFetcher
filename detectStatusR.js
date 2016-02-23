@@ -32,15 +32,15 @@ var machineStatus = {
 		next: 'washing'
 	},
 	'washing': {
-		power: 55000,
+		power: 37500,
 		next: 'outWater'
 	},
 	'outWater': {
-		power: 30000,
+		power: 47000,
 		next: 'drying'
 	},
 	'drying': {
-		power: 51000,
+		power: 35000,
 		next: ['inWater','idle']
 	}
 }
@@ -82,7 +82,10 @@ var main = function(){
 
 						nowStatus = rows[0].status;
 						transform = rows[0].transitionPeriod;
-						nowPeriod = rows[0].period;
+						if (rows[0].period == 0)
+							nowPeriod = 1;
+						else
+							nowPeriod = rows[0].period;
 						preStatus = rows[1].status;
 
 						console.log(currentPower)
@@ -104,7 +107,7 @@ var main = function(){
 								queryString = "UPDATE plugStatus SET `transitionPeriod` = ? WHERE `transitionPeriod` > 0 ";
 								if (nowStatus == 'inWater' && nowPeriod == 1)
 									sendMessage(["+8869783388929"],"StartWashing");
-								else if (nowStatus == 'idle' && nowPeriod == 0)
+								else if (nowStatus == 'idle' && nowPeriod == 1)
 									sendFinishNotice(mac);
 								connection.query(queryString, [transform],function (err, rows){
 									if (err)
@@ -151,7 +154,7 @@ var main = function(){
 
 function inStatus(power ,status){
 	var statusPower = machineStatus[status].power
-	if ((Math.abs(power - statusPower) / statusPower) < 0.4)
+	if ((Math.abs(power - statusPower) / statusPower) < 0.15)
 		return true;
 	else if (status == 'idle')
 		return power < statusPower;
