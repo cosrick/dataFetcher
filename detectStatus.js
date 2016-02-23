@@ -132,8 +132,13 @@ var main = function(){
 								}else
 									nowStatus = machineStatus[nowStatus].next;
 
+								if ((transform == 3) && (nowStatus == 'washing'))
+									var value = [dataId, mac, timestamp, nowStatus, 0, nowPeriod];
+								else
+									var value = [dataId, mac, timestamp, nowStatus, 1, nowPeriod];
+
 								queryString = "Insert into plugStatus SET `id`= ? , `plugID`= ?, `timestamp`= ?, `status`= ?, `transitionPeriod`= ?, `Period` = ?";
-								connection.query(queryString, [dataId, mac, timestamp, nowStatus, 1, nowPeriod],function (err, rows){
+								connection.query(queryString, value,function (err, rows){
 									if (err)
 										console.log(err)
 									else
