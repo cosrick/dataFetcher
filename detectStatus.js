@@ -4,7 +4,8 @@ var dateFormat = require('dateformat');
 var async = require('async');
 var config = require('./config');
 var connection = config.connection;
-var sendEmail = require('./sendEmail');
+var sendMessage = require('./sendMessage');
+
 
 var nowStatus;
 var transform;
@@ -161,7 +162,7 @@ function inStatus(power ,status){
 }
 
 function sendFinishNotice(macID){
-	var querystr = "SELECT * FROM subscription JOIN user WHERE `finish` = 0 AND machineID = ?";
+	var querystr = "SELECT * FROM subscription INNER JOIN user ON subscription.userEmail=user.email WHERE `finish` = 0 AND machineID = ?";
 	connection.query(querystr, [macID], function(err, rows){
 		if (rows.length > 0){
 			rows.forEach(function(row,index){
