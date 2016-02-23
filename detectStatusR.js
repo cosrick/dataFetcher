@@ -100,7 +100,7 @@ var main = function(){
 									if (err)
 										console.log(err)
 									else
-										console.log(timestamp,nowStatus,transform,preStatus)
+										console.log("意外",timestamp,nowStatus,transform,preStatus,nowPeriod)
 								});
 							}else{
 								transform = 0;
@@ -113,7 +113,7 @@ var main = function(){
 									if (err)
 										console.log(err)
 									else
-										console.log(timestamp, nowStatus,transform,preStatus)
+										console.log("確定更改",timestamp, nowStatus,transform,preStatus,nowPeriod)
 								});
 							} 
 						}else{
@@ -137,11 +137,11 @@ var main = function(){
 									if (err)
 										console.log(err)
 									else
-										console.log(timestamp,nowStatus,transform,preStatus,nowPeriod)
+										console.log("變動",timestamp,nowStatus,transform,preStatus,nowPeriod)
 								});
 								
 							}else{
-								console.log(timestamp,nowStatus,transform,preStatus,nowPeriod)
+								console.log("不變",timestamp,nowStatus,transform,preStatus,nowPeriod)
 							}
 						}
 					}
