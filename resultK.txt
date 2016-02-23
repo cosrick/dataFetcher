@@ -4954,3 +4954,4 @@
 {"ID":"20F85EA96EE0","timestamp":"2016-02-23 00:43:35","currentA":13,"currentPower":1172,"energy":27861,"powerOn":1}
 {"ID":"20F85EA96EE0","timestamp":"2016-02-23 00:43:52","currentA":13,"currentPower":1172,"energy":27861,"powerOn":1}
 {"ID":"20F85EA96EE0","timestamp":"2016-02-23 00:44:44","currentA":13,"currentPower":1172,"energy":27861,"powerOn":1}
+{"ID":"20F85EA96EE0","timestamp":"2016-02-23 11:38:53","currentA":6,"currentPower":516,"energy":28098,"powerOn":1}

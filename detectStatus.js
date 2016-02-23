@@ -97,25 +97,21 @@ var main = function(){
 								connection.query(queryString, function (err, rows){
 									if (err)
 										console.log(err)
-										// callback(err);
 									else
 										console.log(timestamp,nowStatus,transform,preStatus)
-										// callback();
 								});
 							}else{
 								transform = 0;
 								queryString = "UPDATE plugStatus SET `transitionPeriod` = ? WHERE `transitionPeriod` > 0 ";
-								// if (nowStatus == 'inWater' && nowPeriod == 1)
-								// 	sendEmail("StartWashing");
-								// else if (nowStatus == 'idle' && nowPeriod == 0)
-								// 	sendEmail("EndWashing");
+								if (nowStatus == 'inWater' && nowPeriod == 1)
+									sendMessage(["+8869783388929"],"StartWashing");
+								else if (nowStatus == 'idle' && nowPeriod == 0)
+									sendSubscriptionEmail("EndWashing");
 								connection.query(queryString, [transform],function (err, rows){
 									if (err)
 										console.log(err)
-										// callback(err);
 									else
 										console.log(timestamp, nowStatus,transform,preStatus)
-										// callback();
 								});
 							} 
 						}else{
@@ -138,24 +134,16 @@ var main = function(){
 								connection.query(queryString, [dataId, mac, timestamp, nowStatus, 1, nowPeriod],function (err, rows){
 									if (err)
 										console.log(err)
-										// callback(err);
 									else
 										console.log(timestamp,nowStatus,transform,preStatus,nowPeriod)
-										// callback();
 								});
 								
 							}else{
 								console.log(timestamp,nowStatus,transform,preStatus,nowPeriod)
-								// callback()
 							}
 						}
 					}
 				})
-			// },function(err){
-			// 	if (err)
-			// 		console.log(err);
-			// 	console.log(nowStatus,transform,preStatus)
-			// })
 			
 		}
 	})
@@ -170,6 +158,21 @@ function inStatus(power ,status){
 		return power < statusPower;
 	else
 		return false;
+}
+
+function sendFinishNotice(macID){
+	var querystr = "SELECT * FROM subscription JOIN user WHERE `finish` = 0 AND machineID = ?";
+	connection.query(querystr, [macID], function(err, rows){
+		if (rows.length > 0){
+			rows.forEach(function(row,index){
+				users.push(row.number)
+				sendMessage(users,"Washing Machine Finished");
+			})
+		}else{
+			console.log("no user subscript")
+		}
+	})
+	console.log(users)
 }
 
 if (require.main === module) {

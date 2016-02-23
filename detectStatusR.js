@@ -105,10 +105,9 @@ var main = function(){
 							}else{
 								transform = 0;
 								queryString = "UPDATE plugStatus SET `transitionPeriod` = ? WHERE `transitionPeriod` > 0 ";
-								// if (nowStatus == 'inWater' && nowPeriod == 1)
-								// 	sendEmail("StartWashing");
-								// else if (nowStatus == 'idle' && nowPeriod == 0)
-								// 	sendEmail("EndWashing");
+								if (nowStatus == 'inWater' && nowPeriod == 1)
+									sendMessage("StartWashing");
+								else if (Message("EndWashing");
 								connection.query(queryString, [transform],function (err, rows){
 									if (err)
 										console.log(err)
