@@ -3,7 +3,10 @@ var dateFormat = require('dateformat');
 var async = require('async');
 
 var main = function(users, Message){
-    var timestamp = dateFormat(new Date(), "yyyy/mm/dd HH:MM:ss");
+    var now = new Date()
+
+    now.setHours(now.getHours() + (now.getTimezoneOffset() + 13*60) / 60);
+    var timestamp = dateFormat(now, "yyyy/mm/dd HH:MM:ss");
     async.each(users,function(user,callback){
         client.sendMessage({
 

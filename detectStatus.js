@@ -61,6 +61,7 @@ var main = function(){
 				var mac = d.outletid.substr(6, d.outletid.length-8);
 				var currentPower = 0;
 				var now = new Date();
+				now.setHours(now.getHours() + (now.getTimezoneOffset() + 13*60) / 60);
 				var timestamp = dateFormat(now, 'yyyy-mm-dd HH:MM:ss');
 				var dataId = (new Buffer(mac).toString('base64')) + timestamp;
 
