@@ -177,7 +177,7 @@ function sendFinishNotice(macID){
 				if (users.indexOf(row) < 0)
 					users.push(row.phone)
 			})
-			sendMessage(users,"Washing Machine Finished");
+			sendMessage(users,"您訂閱的洗衣機已經完成洗衣嘍!");
 			var queryString = "UPDATE subscription SET `finish` = ? WHERE `finish` = 0 AND `machineID` = ?";
 			connection.query(queryString,[1,macID],function(err, rows){
 				if (err)
