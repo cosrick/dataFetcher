@@ -177,7 +177,7 @@ function sendFinishNotice(macID){
 					users.push(row.phone)
 			})
 			sendMessage(users,"Washing Machine Finished");
-			var queryString = "UPDATE plugStatus SET `finish` = ? WHERE `finish` = 0 AND `machineID` = ?";
+			var queryString = "UPDATE subscription SET `finish` = ? WHERE `finish` = 0 AND `machineID` = ?";
 			connection.query(queryString,[1,macID],function(err, rows){
 				if (err)
 					console.log(err)
