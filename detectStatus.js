@@ -133,7 +133,7 @@ var main = function(){
 								}else
 									nowStatus = machineStatus[nowStatus].next;
 
-								if ((transform == 3) && (nowStatus == 'washing'))
+								if ((nowPeriod == 3) && (nowStatus == 'washing'))
 									var value = [dataId, mac, timestamp, nowStatus, 0, nowPeriod];
 								else
 									var value = [dataId, mac, timestamp, nowStatus, 1, nowPeriod];
