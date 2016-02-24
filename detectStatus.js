@@ -169,12 +169,20 @@ function inStatus(power ,status){
 
 function sendFinishNotice(macID){
 	var querystr = "SELECT * FROM subscription INNER JOIN user ON subscription.userEmail=user.email WHERE `finish` = 0 AND machineID = ?";
-	var users = [];
+	var users = ['+886932237971'];
 	connection.query(querystr, [macID], function(err, rows){
 		if (rows.length > 0){
 			rows.forEach(function(row,index){
-				users.push(row.phone)
-				sendMessage(users,"Washing Machine Finished");
+				if (users.indexOf(row) < 0)
+					users.push(row.phone)
+			})
+			sendMessage(users,"Washing Machine Finished");
+			var queryString = "UPDATE plugStatus SET `finish` = ? WHERE `finish` = 0 AND `machineID` = ?";
+			connection.query(queryString,[1,macID],function(err, rows){
+				if (err)
+					console.log(err)
+				else
+					console.log("delete subscription on machine ", macID);
 			})
 		}else{
 			console.log("no user subscript")
