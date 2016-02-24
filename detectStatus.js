@@ -53,7 +53,6 @@ var main = function(){
 			var json = JSON.parse(body);
 
 			var dataList = json.data;
-			console.log(dataList)
 			d = dataList[0]
 			// async.each(dataList,function(d,callback){
 
@@ -89,7 +88,7 @@ var main = function(){
 							nowPeriod = rows[0].period;
 						preStatus = rows[1].status;
 
-						console.log(currentPower)
+						console.log(mac, currentPower, nowPeriod,transform,nowPeriod,preStatus)
 						
 						var queryString;
 						//Transform period

@@ -53,7 +53,6 @@ var main = function(){
 			var json = JSON.parse(body);
 
 			var dataList = json.data;
-			console.log(dataList)
 			d = dataList[0]
 			// async.each(dataList,function(d,callback){
 
@@ -81,6 +80,7 @@ var main = function(){
 						console.log("Error: ", err);
 					else{
 
+						console.log(mac)
 						nowStatus = rows[0].status;
 						transform = rows[0].transitionPeriod;
 						if (rows[0].period == 0)
@@ -89,7 +89,7 @@ var main = function(){
 							nowPeriod = rows[0].period;
 						preStatus = rows[1].status;
 
-						console.log(currentPower)
+						console.log(mac, currentPower, nowPeriod,transform,nowPeriod,preStatus)
 						
 						var queryString;
 						//Transform period
@@ -133,7 +133,7 @@ var main = function(){
 								}else
 									nowStatus = machineStatus[nowStatus].next;
 
-								queryString = "Insert into plugStatus SET `id`= ? , `plugID`= ?, `timestamp`= ?, `status`= ?, `transitionPeriod`= ?, `Period` = ?";
+								queryString = "Insert into plugStatus SET `id`= ? , `plugID`= ?, `timestamp`= ?, `status`= ?, `transitionPeriod`= ?, `period` = ?";
 								connection.query(queryString, [dataId, mac, timestamp, nowStatus, 1, nowPeriod],function (err, rows){
 									if (err)
 										console.log(err)
