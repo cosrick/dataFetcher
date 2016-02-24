@@ -88,7 +88,8 @@ var main = function(){
 							nowPeriod = rows[0].period;
 						preStatus = rows[1].status;
 
-						console.log(mac, currentPower, nowPeriod,transform,nowPeriod,preStatus)
+						console.log(mac, currentPower, nowStatus,transform,nowPeriod,preStatus)
+						console.log('\n')
 						
 						var queryString;
 						//Transform period

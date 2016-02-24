@@ -80,7 +80,6 @@ var main = function(){
 						console.log("Error: ", err);
 					else{
 
-						console.log(mac)
 						nowStatus = rows[0].status;
 						transform = rows[0].transitionPeriod;
 						if (rows[0].period == 0)
@@ -89,7 +88,8 @@ var main = function(){
 							nowPeriod = rows[0].period;
 						preStatus = rows[1].status;
 
-						console.log(mac, currentPower, nowPeriod,transform,nowPeriod,preStatus)
+						console.log(mac, currentPower, nowStatus,transform,nowPeriod,preStatus);
+						console.log('\n')
 						
 						var queryString;
 						//Transform period
