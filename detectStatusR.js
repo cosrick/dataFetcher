@@ -153,13 +153,25 @@ var main = function(){
 }
 
 function inStatus(power ,status){
-	var statusPower = machineStatus[status].power
-	if ((Math.abs(power - statusPower) / statusPower) < 0.12)
-		return true;
-	else if (status == 'idle')
-		return power < statusPower;
-	else
-		return false;
+	var statusPower = machineStatus[status].power;
+	if (status == 'inWater'){
+		if (((Math.abs(power - 1200) / statusPower) < 0.12) || ((Math.abs(power - 1700) / statusPower) < 0.12))
+			return true;
+		else if (status == 'idle')
+			return power < statusPower;
+		else
+			return false;
+
+	}else{
+		if ((Math.abs(power - statusPower) / statusPower) < 0.12)
+			return true;
+		else if (status == 'idle')
+			return power < statusPower;
+		else
+			return false;
+	}
+
+	
 }
 
 function sendFinishNotice(macID){
@@ -169,8 +181,8 @@ function sendFinishNotice(macID){
 		if (rows.length > 0){
 			rows.forEach(function(row,index){
 				users.push(row.phone)
-				sendMessage(users,"Washing Machine Finished");
 			})
+			sendMessage(users,"Washing Machine Finished");
 		}else{
 			console.log("no user subscript")
 		}
