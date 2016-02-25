@@ -170,7 +170,7 @@ function inStatus(power ,status){
 
 function sendFinishNotice(macID){
 	var querystr = "SELECT * FROM subscription INNER JOIN user ON subscription.userEmail=user.email WHERE `finish` = 0 AND machineID = ?";
-	var users = ['+886932237971'];
+	var users = [];
 	connection.query(querystr, [macID], function(err, rows){
 		if (rows.length > 0){
 			rows.forEach(function(row,index){
