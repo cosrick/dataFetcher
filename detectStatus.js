@@ -106,9 +106,7 @@ var main = function(){
 							}else{
 								transform = 0;
 								queryString = "UPDATE plugStatus SET `transitionPeriod` = ? WHERE `transitionPeriod` > 0 ";
-								if (nowStatus == 'inWater' && nowPeriod == 1)
-									sendMessage(["+886978388929"],"StartWashing");
-								else if (nowStatus == 'idle' && nowPeriod == 1)
+								if (nowStatus == 'idle' && nowPeriod == 1)
 									sendFinishNotice(mac);
 								connection.query(queryString, [transform],function (err, rows){
 									if (err)
